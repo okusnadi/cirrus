@@ -75,8 +75,8 @@ function insertVideo () {
 function initialize (gui) {
  	var menu = new gui.Menu();
 
-	menu.append(new gui.MenuItem({ label: 'Insert image', click: insertImage }));
-	menu.append(new gui.MenuItem({ label: 'Insert video', click: insertVideo }));
+	menu.append(new gui.MenuItem({icon: 'picture.png', label: 'Insert image', click: insertImage }));
+	menu.append(new gui.MenuItem({icon: 'youtube.png', label: 'Insert video', click: insertVideo }));
 
 	window.document.querySelector('#designArea')
 	.addEventListener('contextmenu', function (event) { 
