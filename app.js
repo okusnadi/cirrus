@@ -34,15 +34,19 @@ function saveFile () {
 
 
 function loadMenu () {
+
+	var menuBar = new gui.Menu({type:'menubar'});
+
+	// Create sub-menu
+	var menuItems = new gui.Menu();
+
+	menuItems.append(new gui.MenuItem({ label: 'Open', click: openFile }));
+	menuItems.append(new gui.MenuItem({ label: 'Save', click: saveFile }));
+
+
 	if (process.platform === 'darwin') {
-		var menuBar = new gui.Menu({type:'menubar'});
 
-		// Create sub-menu
-		var menuItems = new gui.Menu();
-
-		menuItems.append(new gui.MenuItem({ label: 'Open', click: openFile }));
-		menuItems.append(new gui.MenuItem({ label: 'Save', click: saveFile }));
-
+		// Load Mac OS X application menu
 		menuBar.createMacBuiltin('Cirrus');
 
 		menuBar.insert(
@@ -52,10 +56,20 @@ function loadMenu () {
 		    }), 1
 		);
 
-		gui.Window.get().menu = menuBar;
 	} else {
 
+		// Load Windows/Linux application menu
+		menuBar.append(
+		    new gui.MenuItem({
+		        label: 'File',
+		        submenu: menuItems // menu elements from menuItems object
+		    }), 1
+		);
+
 	}
+
+	gui.Window.get().menu = menuBar;
+
 }
 
 
