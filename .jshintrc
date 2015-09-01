@@ -15,7 +15,8 @@
     "process",
     "require",
     "setInterval",
-    "alert"
+    "alert",
+    "prompt"
   ],
   "strict": true,
   "trailing": true,
